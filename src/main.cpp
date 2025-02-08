@@ -29,10 +29,9 @@ int main() {
 
   std::cout << "iptr2 after release = " << iptr2.get() << '\n';
 
-  // test deleter
   struct FileDeleter {
     void operator()(FILE *f) const { fclose(f); }
   };
   using UniqueFile = uniquePtr<FILE, FileDeleter>;
-  UniqueFile fptr(fopen("smart_pointers.hpp", "r"));
+  UniqueFile fptr(fopen("test.txt", "w"));
 }
